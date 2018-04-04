@@ -1,13 +1,16 @@
-package com.pluralsight.service;
+package com.pluralsight.serviceImpl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.pluralsight.model.Gender;
 import com.pluralsight.model.User;
 import com.pluralsight.repository.UserRepository;
+import com.pluralsight.service.UserService;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -75,6 +78,23 @@ public class UserServiceImpl implements UserService {
 	public User userInfo(String username) {
 
 		return userRepo.userInfo(username);
+	}
+	
+	public List<Gender> findAllTypes(){
+		
+		List<Gender> genders = new ArrayList<Gender>();
+		
+		Gender male = new Gender();
+		male.setType("Male");
+		
+		Gender female = new Gender();
+		female.setType("Female");
+		
+		genders.add(male);
+		genders.add(female);
+		
+		return genders;
+		
 	}
 
 }

@@ -1,4 +1,4 @@
-package com.pluralsight.service;
+package com.pluralsight.serviceImpl;
 
 import java.util.List;
 
@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.pluralsight.model.Analysis;
 
 import com.pluralsight.repository.AnalysisRepository;
+import com.pluralsight.service.AnalysisService;
 
 @Service
 public class AnalysisServiceImpl implements AnalysisService {
@@ -62,8 +63,6 @@ public class AnalysisServiceImpl implements AnalysisService {
 		updatedAnalysis.setCategory(analysis.getCategory());
 		updatedAnalysis.setResult(analysis.getResult());
 		updatedAnalysis.setMinValue(analysis.getMinValue());
-		// updatedAnalysis.setUnit(analysis.getUnit());
-		// updatedAnalysis.setUserId(analysis.getUserId());
 
 		return updatedAnalysis;
 	}
