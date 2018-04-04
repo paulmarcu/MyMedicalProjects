@@ -77,25 +77,4 @@ public class UserServiceImpl implements UserService {
 		return userRepo.userInfo(username);
 	}
 
-	/*
-	 * public List<User> testAllUsers(){
-	 * 
-	 * List<User> users = new ArrayList<User>();
-	 * 
-	 * User u2 = new User(); u2.setCnp("198467365223"); u2.setFirstName("Marcu");
-	 * u2.setLastName("Ionelut");
-	 * 
-	 * User u1 = new User(); u1.setCnp("198467365555"); u1.setFirstName("Nechita");
-	 * u1.setLastName("Gergel");
-	 * 
-	 * User u3 = new User(); u1.setCnp("198467366666"); u1.setFirstName("Pop");
-	 * u1.setLastName("Dorel");
-	 * 
-	 * users.add(u1); users.add(u2); users.add(u3);
-	 * 
-	 * return users;
-	 * 
-	 * }
-	 */
-
 }
