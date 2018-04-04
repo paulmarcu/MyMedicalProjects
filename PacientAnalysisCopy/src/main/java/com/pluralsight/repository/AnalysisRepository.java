@@ -14,7 +14,7 @@ import com.pluralsight.model.Analysis;
 @Repository
 public interface AnalysisRepository extends JpaRepository<Analysis, Integer> {
 	
-	@Query("Select new Analysis(a.name, a.category, a.minValue, a.maxValue, a.result) from Analysis a join a.user u where u.id = :id")
+	@Query("Select new Analysis(a.id, a.name, a.category, a.minValue, a.maxValue, a.result) from Analysis a join a.user u where u.id = :id")
 	List<Analysis> getAllAnalysisById(@Param ("id") int id);
 	
 	@Query("Select new Analysis(a.name, a.category, a.minValue, a.maxValue, a.result) from Analysis a join a.user u where u.username = :username")

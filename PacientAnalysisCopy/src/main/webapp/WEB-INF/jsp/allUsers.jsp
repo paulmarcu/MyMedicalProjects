@@ -141,8 +141,8 @@ used to vertically center elements, may need modification if you're not using de
                   	<c:forEach items="${users}" var="user">
                           <tr>
                             <td align="center">
-                              <a href="${pageContext.request.contextPath}/user/editUser/${user.id}.html" class="btn btn-default"><span class="glyphicon glyphicon-wrench"></span></a>
-                              <a href="${pageContext.request.contextPath}/user/userDelete/${user.id}.html" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
+                              <a href="${pageContext.request.contextPath}/user/editUser/${user.id}.html" data-original-title="Edit user" data-toggle="tooltip" type="button" class="btn btn-default"><span class="glyphicon glyphicon-wrench"></span></a>
+                              <a href="${pageContext.request.contextPath}/user/userDelete/${user.id}.html" data-original-title="Delete user" data-toggle="tooltip" type="button" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
                             </td>
                             <td class="hidden-xs">${user.id}</td>
                             <td>${user.username}</td>
@@ -158,7 +158,43 @@ used to vertically center elements, may need modification if you're not using de
               
                 </div>
               </div>
-            </div>
+      
+    <script>
+    $(document).ready(function() {
+        var panels = $('.user-infos');
+        var panelsButton = $('.dropdown-user');
+        panels.hide();
 
+        //Click dropdown
+        panelsButton.click(function() {
+            //get data-for attribute
+            var dataFor = $(this).attr('data-for');
+            var idFor = $(dataFor);
+
+            //current button
+            var currentButton = $(this);
+            idFor.slideToggle(400, function() {
+                //Completed slidetoggle
+                if(idFor.is(':visible'))
+                {
+                    currentButton.html('<i class="glyphicon glyphicon-chevron-up text-muted"></i>');
+                }
+                else
+                {
+                    currentButton.html('<i class="glyphicon glyphicon-chevron-down text-muted"></i>');
+                }
+            })
+        });
+
+
+        $('[data-toggle="tooltip"]').tooltip();
+
+        $('button').click(function(e) {
+            e.preventDefault();
+            alert("This is a demo.\n :-)");
+        });
+    });
+    
+    </script>
 </body>
 </html>

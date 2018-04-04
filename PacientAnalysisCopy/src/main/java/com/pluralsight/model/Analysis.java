@@ -51,7 +51,7 @@ public class Analysis implements Serializable {
 	public Analysis(String name, String category, double minValue, double maxValue, double result) {
 		
 		this.name = name;
-		this.category = name;
+		this.category = category;
 		this.minValue = minValue;
 		this.maxValue = maxValue;
 		this.result = result;
@@ -61,7 +61,7 @@ public class Analysis implements Serializable {
 		
 		this.id = id;
 		this.name = name;
-		this.category = name;
+		this.category = category;
 		this.minValue = minValue;
 		this.maxValue = maxValue;
 		this.result = result;
