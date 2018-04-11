@@ -108,5 +108,10 @@ public class UsersController {
 
 		return "oneUserOneDetail";
 	}
+	
+	@RequestMapping(value = "/search", method = RequestMethod.GET)
+	public String getSearch() {
+		return "searchPageByName";
+	}
 
 }
