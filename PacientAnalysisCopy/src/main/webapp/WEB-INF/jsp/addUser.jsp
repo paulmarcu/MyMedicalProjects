@@ -50,6 +50,33 @@
 
 </style>
 
+<script type="text/javascript">
+	$(document).ready(function(){
+		$.ajax({
+			url: "http://localhost:8080/PacientAnalysis/rest/getTypes"
+		}).then(function(data){
+			for(var i = 0; i < data.length; i++){
+				$('.select_gender').append('<option value="' + data[i].type + '">'+ data[i].type +'</option>');
+			}
+			
+		});
+	});
+
+</script>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$.ajax({
+			url: "http://localhost:8080/PacientAnalysis/rest/getRoles"
+		}).then(function(data){
+			for(var i = 0; i < data.length; i++){
+				$('.select_role').append('<option value="' + data[i].id + '">' + data[i].name + '</option>')
+			}
+		})
+	})
+	
+</script>
+
 </head>
 <body>
   <div class="jumbotron text-center">
@@ -123,7 +150,9 @@
 		</div>
 		<div class="col-md-3">
 			<label>Role</label>
-			<form:input type="text" class="form-control" placeholder="Role:(1)User/(2)Admin" path="role.id"/>
+			<form:select path="role.id" class="select_role form-control">
+				<option value="">--Please select one--</option>
+			</form:select>
 			<form:errors path="role.id" cssClass="error"/>
 		</div>
 		<div class="col-md-3">
@@ -143,7 +172,9 @@
 		</div>
 		<div class="col-md-3">
 			<label>Gender</label>
-			<form:input type="text" class="form-control" placeholder="Gender" path="gender"/>
+			<form:select path="gender" class="select_gender form-control">
+				<option value="">--Please select one--</option>
+			</form:select>
 			<form:errors path="gender" cssClass="error"/>
 		</div>
 	</div>

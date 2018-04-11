@@ -84,6 +84,7 @@ public class User implements Serializable {
 	private List<Analysis> analysises = new ArrayList<Analysis>();
 	
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JsonManagedReference
 	private List<Appointment> appointments = new ArrayList<Appointment>();
 	
 	public User() {};
