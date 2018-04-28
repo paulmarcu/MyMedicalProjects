@@ -47,6 +47,7 @@
       		<li><a
 					href="${pageContext.request.contextPath}/analysis/addAnalysis.html">Add
 						Analysis</a></li>
+			<li><a href="${pageContext.request.contextPath}/laboratory/addLaboratory.html">Add Laboratory</a></li>
       	</security:authorize>
     </ul>
     <ul class="nav navbar-nav navbar-right">
