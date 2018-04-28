@@ -26,5 +26,7 @@ public interface UserService {
 	
 	List<Gender> findAllTypes();
 	
+	List<User> InfoFromAllUsers();
+	
 
 }

@@ -1,5 +1,6 @@
 package com.pluralsight.serviceImpl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.pluralsight.model.Analysis;
-
+import com.pluralsight.model.Category;
 import com.pluralsight.repository.AnalysisRepository;
 import com.pluralsight.service.AnalysisService;
 
@@ -77,6 +78,24 @@ public class AnalysisServiceImpl implements AnalysisService {
 	public List<Analysis> getBadAnalysis() {
 
 		return analysisRepo.getBadAnalysis();
+	}
+
+	public List<Category> allCategoriesForAnalysis() {
+		
+		List<Category> categories = new ArrayList<Category>();
+		
+		Category c1 = new Category();
+		c1.setName("Hematologie");
+		Category c2 = new Category();
+		c2.setName("Biochimie serica");
+		Category c3 = new Category();
+		c3.setName("Profil urologic");
+		
+		categories.add(c1);
+		categories.add(c2);
+		categories.add(c3);
+		
+		return categories;
 	}
 
 }

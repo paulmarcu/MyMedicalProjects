@@ -1,5 +1,6 @@
 package com.pluralsight.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.pluralsight.model.Category;
 import com.pluralsight.model.Gender;
 import com.pluralsight.model.Role;
+import com.pluralsight.model.User;
 import com.pluralsight.service.AnalysisService;
 import com.pluralsight.service.RoleService;
 import com.pluralsight.service.UserService;
@@ -42,6 +45,39 @@ public class RestController {
 		List<Role> roles = roleService.getAllRoles();
 
 		return roles;
+	}
+	
+	@RequestMapping(value = "/onOffValue", method = RequestMethod.GET)
+	public @ResponseBody List<Integer> onAndOffValue(){
+		
+		
+		List<Integer> resultOnOff = new ArrayList<Integer>();
+		
+		int onValue = 1;
+		int offValue = 0;
+		
+		resultOnOff.add(onValue);
+		resultOnOff.add(offValue);
+		
+		return resultOnOff;
+	}
+	
+	@RequestMapping(value = "/infoFromUsers", method = RequestMethod.GET)
+	public @ResponseBody List<User> allInfoFromUsers(){
+		
+		List<User> users = userService.InfoFromAllUsers();
+		
+		return users;
+		
+	}
+	
+	@RequestMapping(value = "/allCategories", method = RequestMethod.GET)
+	public @ResponseBody List<Category> allCategories(){
+		
+		List<Category> categories = analysisService.allCategoriesForAnalysis();
+		
+		return categories;
+		
 	}
 
 	/*

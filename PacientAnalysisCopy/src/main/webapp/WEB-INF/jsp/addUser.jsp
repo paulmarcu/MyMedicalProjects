@@ -48,6 +48,7 @@
 	margin-bottom: 2px;
 }
 
+
 </style>
 
 <script type="text/javascript">
@@ -111,23 +112,20 @@
 		<div class="col-md-12">
 			<label>Cnp</label>
  			<form:input type="text" class="form-control" placeholder="Cnp" path="cnp"/>	
- 			<form:errors path="cnp" cssClass="error"/>	
 		</div>
 		<div class="col-md-6">
 			<label>Username</label>
 			<form:input type="text" class="form-control" placeholder="Username" path="username" />
-			<form:errors path="username" cssClass="error"/>
 		</div>
 		<div class="col-md-6">
 			<label>Password</label>
 			<form:input type="password" class="form-control" placeholder="Password" path="password"/>
-			<form:errors path="password" cssClass="error"/>
 		</div>
 		<div class="col-md-6">
 			<label>First Name</label>
 			<form:input type="text" class="form-control" placeholder="First Name" path="firstName"/>
-			<form:errors path="firstName" cssClass="error"/>
-		</div>
+			<!--<form:errors path="firstName" cssClass="error"/> -->
+		</div> 
 		<div class="col-md-6">
 			<label>Last Name</label>
 			<form:input type="text" class="form-control" placeholder="Last Name" path="lastName"/>
@@ -141,29 +139,24 @@
 		<div class="col-md-3">
 			<label>Address</label>
 			<form:input type="text" class="form-control" placeholder="Address" path="address"/>
-			<form:errors path="address" cssClass="error"/>
 		</div>
 		<div class="col-md-3">
 			<label>Activ</label>
 			<form:input type="text" class="form-control" placeholder="1(Yes)/0(No)" path="enabled"/>
-			<form:errors path="enabled" cssClass="error"/>
 		</div>
 		<div class="col-md-3">
 			<label>Role</label>
 			<form:select path="role.id" class="select_role form-control">
-				<option value="">--Please select one--</option>
+				<option value="0">--Please select role--</option>
 			</form:select>
-			<form:errors path="role.id" cssClass="error"/>
 		</div>
 		<div class="col-md-3">
 			<label>Phone</label>
 			<form:input type="text" class="form-control" placeholder="Phone" path="phone"/>
-			<form:errors path="phone" cssClass="error"/>
 		</div>
 		<div class="col-md-3">
 			<label>Email</label>
 			<form:input type="text" class="form-control" placeholder="Email" path="email"/>
-			<form:errors path="email" cssClass="error"/>
 		</div>
 		<div class="col-md-3">
 			<label>Age</label>
@@ -173,11 +166,11 @@
 		<div class="col-md-3">
 			<label>Gender</label>
 			<form:select path="gender" class="select_gender form-control">
-				<option value="">--Please select one--</option>
+				<option value="">--Please select gender--</option>
 			</form:select>
-			<form:errors path="gender" cssClass="error"/>
 		</div>
 	</div>
+
 	<br>
 	<input class="btn btn-primary" type="submit" value="Submit">
 </form:form>

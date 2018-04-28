@@ -160,52 +160,5 @@
 			<input class="btn btn-primary" type="submit" value="Submit">
 		</form:form>
 	</div>
-	<div id="leftDiv" class="col-md-3 col-md-offset-2  ">
-          <div class="col-xs-9 col-sm-9 col-md-9">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-              <div class="col-xs-12 col-md-4">
-                  </div>
-                </div>
-              </div>
-            </div>
-      <div id="table" class="panel-body table-responsive">
-        <table class="table table-hover">
-          <thead>
-            <tr>
-              <th class="text-left">Details</th>
-            </tr>
-          </thead>
-          <tbody>
-          	<tr>
-          		<td><c:out value="${user.cnp }"></c:out></td>
-          		<td><c:out value="${user.city }"></c:out></td>
-          	</tr>
-          	
-            <tr>
-            	<td><c:out value="${user.firstName }"></c:out> <c:out value="${user.lastName }"></c:out></td>
-            	<td><c:out value="${user.address }"></c:out></td>
-            <tr>
-			<tr>
-				<td><c:out value="${user.age }"></c:out></td>
-				<td><c:out value="${user.username }"></c:out></td>
-			</tr>
-			<tr>
-				<td><c:out value="${user.gender }"></c:out></td>
-				<td><c:out value="${user.password }"></c:out></td>
-			</tr>
-			<tr>
-				<td><c:out value="${user.phone }"></c:out></td>
-				<td><c:out value="${user.role.id }"></c:out> <c:out value="${user.role.name }"></c:out></td>
-			</tr>
-			<tr>
-				<td><c:out value="${user.email }"></c:out></td>
-				<td><c:out value="${user.enabled }"></c:out></td>
-			</tr>
-			
-          </tbody>
-        </table>
-      </div>
-</div>
-	<br>
 </body>
 </html>

@@ -3,9 +3,7 @@ package com.pluralsight.controller;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,11 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import com.pluralsight.model.Analysis;
 import com.pluralsight.model.User;
 import com.pluralsight.service.AnalysisService;
 import com.pluralsight.service.UserService;
+import com.pluralsight.validator.AnalysisValidator;
 
 @Controller
 @RequestMapping(value = "/analysis")
@@ -41,13 +39,17 @@ public class AnalysisController {
 	}
 
 	@RequestMapping(value = "addAnalysis", method = RequestMethod.POST)
-	public String addAnalysis(@ModelAttribute("analysis") Analysis analysis, BindingResult result) {
+	public String addAnalysis(@Valid @ModelAttribute("analysis") Analysis analysis, BindingResult result) {
+		
+		new AnalysisValidator().validate(analysis, result);
+		
+		if(result.hasErrors()) {
+			return "addAnalysis";
+		}
 
-		System.out.println("The error is: " + result.hasErrors());
 		analysisService.create(analysis);
-		System.out.println("The analysis " + analysis.getName() + " was added with succes! ");
 
-		return "redirect:allAnalysises.html";
+		return "redirect:addAnalysis.html";
 	}
 
 	@RequestMapping(value = "/allAnalysises", method = RequestMethod.GET)
@@ -67,7 +69,7 @@ public class AnalysisController {
 		mav.addObject("analysis", analysis);
 		return mav;
 	}
-	
+
 	@RequestMapping(value = "/editAnalysis/{id}", method = RequestMethod.POST)
 	public ModelAndView editAnalysis(@ModelAttribute @Valid Analysis analysis, BindingResult result,
 			@PathVariable int id, final RedirectAttributes redirectAttributes) {
@@ -108,25 +110,25 @@ public class AnalysisController {
 		List<Analysis> myBadAnalysis = analysisService.getBadAnalysis();
 		List<Analysis> badAnalysisFind = new ArrayList<Analysis>();
 		User myUser = userService.userInfo(principal.getName());
-		
+
 		for (Analysis analysis : analysises) {
-			if (analysis.getUser().getId() == myUser.getId() ) {
+			if (analysis.getUser().getId() == myUser.getId()) {
 				myAnalysisForUser.add(analysis);
 			}
 		}
-		
-		for(Analysis badAnalysis : myBadAnalysis) {
-			for(Analysis findAnalysis : myAnalysisForUser) {
-				if(badAnalysis.getId() == findAnalysis.getId()) {
+
+		for (Analysis badAnalysis : myBadAnalysis) {
+			for (Analysis findAnalysis : myAnalysisForUser) {
+				if (badAnalysis.getId() == findAnalysis.getId()) {
 					badAnalysisFind.add(badAnalysis);
 				}
 			}
 		}
-		
+
 		model.addAttribute("badAnalysis", badAnalysisFind);
 		model.addAttribute("analysises", myAnalysisForUser);
 
 		return "analysisForUser";
 	}
-	
+
 }

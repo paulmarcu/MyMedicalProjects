@@ -18,7 +18,9 @@
 <!-- Latest compiled JavaScript -->
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<style type="text/css">
+	
+	<style type="text/css">
+
 .navbar {
 	margin-top: 0px;
 	margin-bottom: 0px;
@@ -27,8 +29,50 @@
 .jumbotron{
 	margin-bottom: 2px;
 }
+
+.error {
+	color: red;
+}
+
+.errorblock {
+	color: #000;
+	background-color: #ffEEEE;
+	border: 3px solid #ff0000;
+	padding: 8px;
+	margin: 16px;
+}
 	
 </style>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+	$.ajax({
+		url: "http://localhost:8080/PacientAnalysis/rest/allCategories"
+	}).then(function(data){
+		for(var i = 0; i < data.length; i++){
+			$('.select_category').append('<option value="' + data[i].name + '">' + data[i].name + '</option>')
+		}
+	});
+	
+});
+
+</script>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+	$.ajax({
+		url: "http://localhost:8080/PacientAnalysis/rest/infoFromUsers"
+	}).then(function(data){
+		for(var i = 0; i <data.length; i++){
+			$('.select_user').append('<option value="' + data[i].id + '">' + data[i].firstName + ' ' + data[i].lastName + '</option>')
+		}
+	});
+});
+
+</script>
+
 </head>
 <body>
 		<div class="jumbotron text-center">
@@ -65,6 +109,7 @@
 <div class="col-md-5">
     <div class="form-area">  
         <form:form commandName="analysis" role="form">
+        <form:errors path="*" cssClass="errorblock" element="div"></form:errors>
         <br style="clear:both">
                     <h3 style="margin-bottom: 25px; text-align: center;">Add Analysis</h3>
                     
@@ -75,7 +120,9 @@
 					
 					<div class="form-group">
 						<label for='fname'>Category</label>
-						<form:input path="category" type="text" class="form-control"/>
+						<form:select path="category" class="select_category form-control">
+							<option value="">--Please select category--</option>
+						</form:select>
 					</div>
 					
     				<div class="form-group">
@@ -93,8 +140,10 @@
 						<form:input path="result" type="text" class="form-control" />
 					</div>
 					<div class="form-group">
-						<label for='fname'>User Id</label>
-						<form:input path="user.id" type="text" class="form-control"></form:input>
+						<label for='fname'>User</label>
+						<form:select path="user.id" class="select_user form-control">
+							<option value="0">--Please select user--</option>
+						</form:select>
 					</div>
         <input class="btn btn-primary" type="submit" value="Submit">
         </form:form>

@@ -3,6 +3,8 @@ package com.pluralsight.controller;
 import java.security.Principal;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.pluralsight.model.User;
 import com.pluralsight.service.UserService;
+import com.pluralsight.validator.UserValidator;
 
 @Controller
 @RequestMapping(value = "/user")
@@ -34,15 +37,15 @@ public class UsersController {
 	}
 
 	@RequestMapping(value = "/addUser", method = RequestMethod.POST)
-	public String addUsers(@ModelAttribute("user") User user, BindingResult result) {
+	public String addUsers(@Valid @ModelAttribute("user") User user, BindingResult result) {
+
+		new UserValidator().validate(user, result);
 
 		if (result.hasErrors()) {
-			return "redirect:/user/addUser.html";
+			return "addUser";
 		}
 
 		userService.create(user);
-
-		System.out.println("The new user: " + user.getUsername() + " succesfully added!");
 
 		return "redirect:allUsers.html";
 	}
@@ -107,11 +110,6 @@ public class UsersController {
 		model.addAttribute("user", user);
 
 		return "oneUserOneDetail";
-	}
-	
-	@RequestMapping(value = "/search", method = RequestMethod.GET)
-	public String getSearch() {
-		return "searchPageByName";
 	}
 
 }

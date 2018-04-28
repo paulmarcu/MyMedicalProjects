@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.pluralsight.model.Analysis;
+import com.pluralsight.model.Category;
 
 @Service
 public interface AnalysisService {
@@ -26,5 +27,7 @@ public interface AnalysisService {
 	Analysis getAnalysisByName(String analysisName);
 	
 	List<Analysis> getBadAnalysis();
+	
+	List<Category> allCategoriesForAnalysis();
 
 }

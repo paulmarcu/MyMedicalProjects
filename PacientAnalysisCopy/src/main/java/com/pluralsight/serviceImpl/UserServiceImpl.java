@@ -79,22 +79,28 @@ public class UserServiceImpl implements UserService {
 
 		return userRepo.userInfo(username);
 	}
-	
-	public List<Gender> findAllTypes(){
-		
+
+	public List<Gender> findAllTypes() {
+
 		List<Gender> genders = new ArrayList<Gender>();
-		
+
 		Gender male = new Gender();
 		male.setType("Male");
-		
+
 		Gender female = new Gender();
 		female.setType("Female");
-		
+
 		genders.add(male);
 		genders.add(female);
-		
+
 		return genders;
-		
+
 	}
+
+	@Transactional
+	public List<User> InfoFromAllUsers() {
+		return userRepo.allInfoFromUsers();
+	}
+
 
 }
