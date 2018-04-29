@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.pluralsight.model.Category;
+import com.pluralsight.model.City;
+import com.pluralsight.model.Country;
 import com.pluralsight.model.Gender;
 import com.pluralsight.model.Role;
 import com.pluralsight.model.User;
@@ -77,6 +79,23 @@ public class RestController {
 		List<Category> categories = analysisService.allCategoriesForAnalysis();
 		
 		return categories;
+		
+	}
+	
+	@RequestMapping(value = "/allCities", method = RequestMethod.GET)
+	public @ResponseBody List<City> allCities(){
+		
+		List<City> cities = userService.allCities();
+		
+		return cities;
+	}
+	
+	@RequestMapping(value = "/allCountries", method = RequestMethod.GET)
+	public @ResponseBody List<Country> allCountries(){
+		
+		List<Country> countries = userService.allCountries();
+		
+		return countries;
 		
 	}
 

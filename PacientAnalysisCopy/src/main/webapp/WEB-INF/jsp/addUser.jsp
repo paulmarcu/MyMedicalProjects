@@ -52,6 +52,32 @@
 </style>
 
 <script type="text/javascript">
+	
+	$(document).ready(function(){
+		$.ajax({
+			url: "http://localhost:8080/PacientAnalysis/rest/allCities"
+		}).then(function(data){
+			for(var i = 0; i < data.length; i++){
+				$('.select_city').append('<option value="' + data[i].name + '">'+ data[i].name +'</option>');
+			}
+			
+		});
+	});
+	
+	$(document).ready(function(){
+		$.ajax({
+			url: "http://localhost:8080/PacientAnalysis/rest/allCountries"
+		}).then(function(data){
+			for(var i = 0; i < data.length; i++){
+				$('.select_country').append('<option value="' + data[i].name + '">'+ data[i].name +'</option>');
+			}
+			
+		});
+	});
+	
+	</script>
+
+<script type="text/javascript">
 	$(document).ready(function(){
 		$.ajax({
 			url: "http://localhost:8080/PacientAnalysis/rest/getTypes"
@@ -134,16 +160,19 @@
 		</div>
 		<div class="col-md-3">
 			<label>City</label>
-			<form:input type="text" class="form-control" placeholder="City"  path="city"/>
-			<form:errors path="city" cssClass="error"/>
+			<form:select class="select_city form-control" placeholder="City"  path="city">
+				<option value="">--Please select city--</option>
+			</form:select>
 		</div>
 		<div class="col-md-3">
-			<label>Address</label>
-			<form:input type="text" class="form-control" placeholder="Address" path="address"/>
+			<label>Home Address</label>
+			<form:input type="text" class="form-control" placeholder="Home Address" path="address"/>
 		</div>
 		<div class="col-md-3">
-			<label>Activ</label>
-			<form:input type="text" class="form-control" placeholder="1(Yes)/0(No)" path="enabled"/>
+			<label>Country</label>
+			<form:select class="select_country form-control" placeholder="Country" path="country">
+				<option value="">--Please select country--</option>
+			</form:select>
 		</div>
 		<div class="col-md-3">
 			<label>Role</label>
@@ -171,7 +200,6 @@
 			</form:select>
 		</div>
 	</div>
-
 	<br>
 	<input class="btn btn-primary" type="submit" value="Submit">
 </form:form>

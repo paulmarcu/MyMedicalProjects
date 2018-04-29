@@ -1,5 +1,7 @@
 package com.pluralsight.serviceImpl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,6 +20,12 @@ public class CabinetServiceImpl implements CabinetService{
 	public Cabinet save(Cabinet cabinet) {
 		
 		return cabinetRepository.save(cabinet);
+	}
+
+	public List<Cabinet> findAll() {
+		
+		
+		return cabinetRepository.findAll();
 	}
 	
 	

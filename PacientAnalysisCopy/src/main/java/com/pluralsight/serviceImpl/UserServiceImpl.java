@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.pluralsight.model.City;
+import com.pluralsight.model.Country;
 import com.pluralsight.model.Gender;
 import com.pluralsight.model.User;
 import com.pluralsight.repository.UserRepository;
@@ -100,6 +102,40 @@ public class UserServiceImpl implements UserService {
 	@Transactional
 	public List<User> InfoFromAllUsers() {
 		return userRepo.allInfoFromUsers();
+	}
+
+	public List<City> allCities() {
+		
+		List<City> cities = new ArrayList<City>();
+		
+		City c1 = new City();
+		c1.setName("Cluj Napoca");
+		cities.add(c1);
+		City c2 = new City();
+		c2.setName("Baia Mare");
+		cities.add(c2);
+		City c3 = new City();
+		c3.setName("Bucuresti");
+		cities.add(c3);
+		City c4 = new City();
+		c4.setName("Brasov");
+		cities.add(c4);
+		City c5 = new City();
+		c5.setName("Oradea");
+		cities.add(c5);
+		
+		return cities;
+	}
+
+	public List<Country> allCountries() {
+		
+		List<Country> countries = new ArrayList<Country>();
+		
+		Country c1 = new Country();
+		c1.setName("Romania");
+		countries.add(c1);
+		
+		return countries;
 	}
 
 

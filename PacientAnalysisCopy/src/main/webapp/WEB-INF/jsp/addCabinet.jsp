@@ -18,6 +18,32 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+<script type="text/javascript">
+	
+	$(document).ready(function(){
+		$.ajax({
+			url: "http://localhost:8080/PacientAnalysis/rest/allCities"
+		}).then(function(data){
+			for(var i = 0; i < data.length; i++){
+				$('.select_city').append('<option value="' + data[i].name + '">'+ data[i].name +'</option>');
+			}
+			
+		});
+	});
+	
+	$(document).ready(function(){
+		$.ajax({
+			url: "http://localhost:8080/PacientAnalysis/rest/allCountries"
+		}).then(function(data){
+			for(var i = 0; i < data.length; i++){
+				$('.select_country').append('<option value="' + data[i].name + '">'+ data[i].name +'</option>');
+			}
+			
+		});
+	});
+	
+	</script>
+
 <style type="text/css">
 .navbar {
 	margin-top: 0px;
@@ -33,6 +59,18 @@
 }
 .text-left{
 	margin-left: 18px;
+}
+
+.error {
+	color: red;
+}
+
+.errorblock {
+	color: #000;
+	background-color: #ffEEEE;
+	border: 3px solid #ff0000;
+	padding: 8px;
+	margin: 16px;
 }
 </style>
 
@@ -76,6 +114,43 @@
 		</ul>
 	</div>
 	</nav>
+	
+		<div class="container">
+		<form:form commandName="cabinet">
+		<form:errors path="*" cssClass="errorblock" element="div"></form:errors>
+		<div class="row">
+			<h2 class="text-left">Add new cabinet</h2>
+		</div>
+			<div class="row">
+				<div class="col-md-12">
+					<label>Name</label>
+ 					<form:input type="text" class="form-control" placeholder="Cabinet Name" path="name"/>	
+				</div>
+				<div class="col-md-3">
+					<label>Cabinet Address</label>
+ 					<form:input type="text" class="form-control" placeholder="Cabinet Adress" path="address"/>
+				</div>
+				<div class="col-md-3">
+					<label>City</label>
+ 					<form:select class="select_city form-control" placeholder="City" path="city">
+ 						<option value="">--Please select city--</option>
+ 					</form:select>
+				</div>
+				<div class="col-md-3">
+					<label>Country</label>
+ 					<form:select class="select_country form-control" placeholder="Country" path="country">
+ 						<option value="">--Please select country--</option>
+ 					</form:select>
+				</div>
+				<div class="col-md-3">
+					<label>Phone</label>
+ 					<form:input type="text" class="form-control" placeholder="Phone" path="phone"/>
+				</div>
+			</div>
+			<br>
+	<input class="btn btn-primary" type="submit" value="Submit">
+			</form:form>
+	</div>
 
 </body>
 </html>

@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"%>
 <%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>All Laboratories Page</title>
+<title>All Cabinets</title>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -89,8 +89,7 @@ iframe {
 </style>
 </head>
 <body>
-
-	<div class="jumbotron text-center">
+<div class="jumbotron text-center">
 		<h1>Welcome to Medical Application!</h1>
 		<p>This application help people and medics to access more
 			efficient the analysis resource</p>
@@ -143,8 +142,8 @@ iframe {
 					<thead>
 						<tr>
 							<th>ID</th>
-							<th>Laboratory Name</th>
-							<th>Laboratory Address</th>
+							<th>Cabinet Name</th>
+							<th>Cabinet Address</th>
 							<th>City</th>
 							<th>Country</th>
 							<th>Phone</th>
@@ -154,14 +153,14 @@ iframe {
 					</thead>
 
 					<tbody>
-						<c:forEach items="${laboratories}" var="laborator">
+						<c:forEach items="${cabinets}" var="cabinet">
 							<tr>
-								<td>${laborator.id }</td>
-								<td>${laborator.name }</td>
-								<td>${laborator.address }</td>
-								<td>${laborator.city }</td>
-								<td>${laborator.country }</td>
-								<td>${laborator.phone }</td>
+								<td>${cabinet.id }</td>
+								<td>${cabinet.name }</td>
+								<td>${cabinet.address }</td>
+								<td>${cabinet.city }</td>
+								<td>${cabinet.country }</td>
+								<td>${cabinet.phone }</td>
 								<td><p data-placement="top" data-toggle="tooltip"
 										title="Edit">
 										<a type="button" class="btn btn-primary"
@@ -183,6 +182,7 @@ iframe {
 			</div>
 		</div>
 	</div>
+
 
 </body>
 </html>

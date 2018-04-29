@@ -28,5 +28,12 @@ public class LoginController {
 		model.addAttribute("error", "true");
 		return "login";
 	}
+	
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	public String registerPage() {
+		
+		
+		return "registration";
+	}
 
 }

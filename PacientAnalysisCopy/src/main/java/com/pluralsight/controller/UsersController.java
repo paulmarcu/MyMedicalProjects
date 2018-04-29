@@ -44,7 +44,8 @@ public class UsersController {
 		if (result.hasErrors()) {
 			return "addUser";
 		}
-
+		
+		user.setEnabled(true);
 		userService.create(user);
 
 		return "redirect:allUsers.html";

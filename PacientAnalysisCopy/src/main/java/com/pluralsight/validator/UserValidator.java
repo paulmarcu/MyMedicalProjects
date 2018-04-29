@@ -94,6 +94,12 @@ public class UserValidator implements Validator {
 		if (user.getAge() <= 0) {
 			errors.reject("age", null, "Please enter a valid age!");
 		}
+		
+		//validate country
+		
+		if(user.getCountry() == null || user.getCountry().equals("")) {
+			errors.reject("country", null, "Please enter a valid country!");
+		}
 
 	}
 

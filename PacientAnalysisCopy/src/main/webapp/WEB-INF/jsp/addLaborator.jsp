@@ -17,8 +17,35 @@
 <!-- Latest compiled JavaScript -->
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
+	<script type="text/javascript">
+	
+	$(document).ready(function(){
+		$.ajax({
+			url: "http://localhost:8080/PacientAnalysis/rest/allCities"
+		}).then(function(data){
+			for(var i = 0; i < data.length; i++){
+				$('.select_city').append('<option value="' + data[i].name + '">'+ data[i].name +'</option>');
+			}
+			
+		});
+	});
+	
+	$(document).ready(function(){
+		$.ajax({
+			url: "http://localhost:8080/PacientAnalysis/rest/allCountries"
+		}).then(function(data){
+			for(var i = 0; i < data.length; i++){
+				$('.select_country').append('<option value="' + data[i].name + '">'+ data[i].name +'</option>');
+			}
+			
+		});
+	});
+	
+	</script>
 
 <style type="text/css">
+
 .navbar {
 	margin-top: 0px;
 	margin-bottom: 0px;
@@ -34,6 +61,19 @@
 .text-left{
 	margin-left: 18px;
 }
+
+.error {
+	color: red;
+}
+
+.errorblock {
+	color: #000;
+	background-color: #ffEEEE;
+	border: 3px solid #ff0000;
+	padding: 8px;
+	margin: 16px;
+}
+
 </style>
 
 </head>
@@ -94,11 +134,16 @@
 				</div>
 				<div class="col-md-3">
 					<label>City</label>
- 					<form:input type="text" class="form-control" placeholder="City" path="city"/>
+ 					<form:select class="select_city form-control" placeholder="City" path="city">
+ 						<option value="">--Please select city--</option>
+ 					</form:select>
+ 					
 				</div>
 				<div class="col-md-3">
 					<label>Country</label>
- 					<form:input type="text" class="form-control" placeholder="Country" path="country"/>
+ 					<form:select  class="select_country form-control" placeholder="Country" path="country">
+ 						<option value="">--Please select country--</option>
+ 					</form:select>
 				</div>
 				<div class="col-md-3">
 					<label>Phone</label>
