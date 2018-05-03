@@ -3,37 +3,42 @@ package com.pluralsight.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "laborator")
 public class Laborator {
-	
+
 	@Id
 	@GeneratedValue
 	private int id;
-	
+
 	@Column(name = "name")
 	private String name;
-	
+
 	@Column(name = "address")
 	private String address;
-	
+
 	@Column(name = "city")
 	private String city;
-	
+
 	@Column(name = "country")
 	private String country;
-	
+
 	@Column(name = "phone")
 	private String phone;
-	
-	@ManyToMany (mappedBy = "laborators")
+
+	@OneToMany(mappedBy = "laboratory", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JsonManagedReference
 	private List<Appointment> appointments = new ArrayList<Appointment>();
 
 	public int getId() {
@@ -90,7 +95,6 @@ public class Laborator {
 
 	public void setAppointments(List<Appointment> appointments) {
 		this.appointments = appointments;
-	} 
-	
-	
+	}
+
 }

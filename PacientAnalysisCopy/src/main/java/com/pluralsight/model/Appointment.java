@@ -2,18 +2,11 @@ package com.pluralsight.model;
 
 import java.sql.Date;
 import java.sql.Time;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -38,19 +31,15 @@ public class Appointment {
 	@JsonBackReference
 	private User user;
 	
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinTable(name = "appointment_laborator",
-	joinColumns = {@JoinColumn(name = "appointment_id")},
-	inverseJoinColumns = {@JoinColumn(name = "laborator_id")})
-	private List<Laborator> laborators = new ArrayList<Laborator>();
+	@ManyToOne
+	@JoinColumn(name = "cabinet_id")
+	@JsonBackReference
+	private Cabinet cabinet;
 	
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinTable(name = "appointment_cabinet",
-	joinColumns = {@JoinColumn(name = "appointment_id")},
-	inverseJoinColumns = {@JoinColumn(name = "cabinet_id")})
-	private List<Cabinet> cabinets = new ArrayList<Cabinet>();
-	
-	
+	@ManyToOne
+	@JoinColumn(name = "laboratory_id")
+	@JsonBackReference
+	private Laborator laboratory;
 
 	public Date getDate() {
 		return date;
@@ -66,14 +55,6 @@ public class Appointment {
 
 	public void setTime(Time time) {
 		this.time = time;
-	}
-
-	public List<Cabinet> getCabinets() {
-		return cabinets;
-	}
-
-	public void setCabinets(List<Cabinet> cabinets) {
-		this.cabinets = cabinets;
 	}
 
 	public int getId() {
@@ -92,14 +73,20 @@ public class Appointment {
 		this.user = user;
 	}
 
-	public List<Laborator> getLaborators() {
-		return laborators;
+	public Cabinet getCabinet() {
+		return cabinet;
 	}
 
-	public void setLaborators(List<Laborator> laborators) {
-		this.laborators = laborators;
+	public void setCabinet(Cabinet cabinet) {
+		this.cabinet = cabinet;
 	}
-	
-	
+
+	public Laborator getLaboratory() {
+		return laboratory;
+	}
+
+	public void setLaboratory(Laborator laboratory) {
+		this.laboratory = laboratory;
+	}
 
 }

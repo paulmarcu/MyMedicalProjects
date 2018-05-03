@@ -5,9 +5,10 @@ import org.springframework.validation.Validator;
 
 import com.pluralsight.model.User;
 
-public class UserValidator implements Validator {
+public class RegisterUserValidator implements Validator {
 
 	public boolean supports(Class<?> clazz) {
+
 		return User.class.equals(clazz);
 	}
 
@@ -76,7 +77,7 @@ public class UserValidator implements Validator {
 
 		if (user.getPassword() == null || user.getPassword().equals("")) {
 			errors.reject("password", null, "Please enter a password!");
-		} else if (user.getPassword().length() <= 6) {
+		} else if (user.getPassword().length() < 5) {
 			errors.reject("password", null, "Password needs to have minimum 6 or more charachters!");
 		}
 

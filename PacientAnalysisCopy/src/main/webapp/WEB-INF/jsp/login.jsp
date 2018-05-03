@@ -17,7 +17,7 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Custom Login Page</title>
+<title>Login Page</title>
 <style type="text/css">
 
 .container{
@@ -27,6 +27,9 @@
 .btn {
 	width: auto;
 	height: auto;
+}
+#signUp{
+	margin-left: 200px;
 }
 
 .inner-addon {
@@ -88,6 +91,7 @@
 				</div>
 				<input class="btn btn-primary " type="submit" name="Submit"
 					value="Submit">
+				<a href="register.html" id="signUp" class="btn btn-primary" type="submit">Sign Up</a>	
 			</form>
 		</div>
 	</div>
