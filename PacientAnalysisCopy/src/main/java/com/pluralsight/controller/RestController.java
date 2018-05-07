@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.pluralsight.model.Cabinet;
 import com.pluralsight.model.Category;
 import com.pluralsight.model.City;
 import com.pluralsight.model.Country;
@@ -17,6 +18,7 @@ import com.pluralsight.model.Gender;
 import com.pluralsight.model.Role;
 import com.pluralsight.model.User;
 import com.pluralsight.service.AnalysisService;
+import com.pluralsight.service.CabinetService;
 import com.pluralsight.service.RoleService;
 import com.pluralsight.service.UserService;
 
@@ -32,6 +34,9 @@ public class RestController {
 
 	@Autowired
 	private RoleService roleService;
+	
+	@Autowired
+	private CabinetService cabinetService;
 
 	@RequestMapping(value = "/getTypes", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody List<Gender> getAllTypes() {
@@ -96,6 +101,15 @@ public class RestController {
 		List<Country> countries = userService.allCountries();
 		
 		return countries;
+		
+	}
+	
+	@RequestMapping(value = "/allCabinets", method = RequestMethod.GET)
+	public @ResponseBody List<Cabinet> allCabinets(){
+		
+		List<Cabinet> cabinets = cabinetService.allCabinets();
+		
+		return cabinets;
 		
 	}
 

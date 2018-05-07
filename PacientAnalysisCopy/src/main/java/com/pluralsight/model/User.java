@@ -82,6 +82,10 @@ public class User implements Serializable {
 
 	public User() {
 	};
+	
+	public User(int id) {
+		this.id = id;
+	}
 
 	public User(int id, String firstName, String lastName) {
 

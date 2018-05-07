@@ -9,7 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -18,30 +17,37 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 @Entity
 @Table(name = "cabinet")
 public class Cabinet {
-	
+
 	@Id
 	@GeneratedValue
 	private int id;
-	
+
 	@Column(name = "name")
 	private String name;
-	
+
 	@Column(name = "address")
 	private String address;
-	
+
 	@Column(name = "city")
 	private String city;
-	
+
 	@Column(name = "country")
 	private String country;
-	
+
 	@Column(name = "phone")
 	private String phone;
-	
+
 	@OneToMany(mappedBy = "cabinet", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JsonManagedReference
 	private List<Appointment> appointments = new ArrayList<Appointment>();
-	
+
+	public Cabinet() {
+	}
+
+	public Cabinet(int id, String name) {
+		this.id = id;
+		this.name = name;
+	}
 
 	public int getId() {
 		return id;

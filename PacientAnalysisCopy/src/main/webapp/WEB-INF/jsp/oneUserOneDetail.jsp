@@ -83,9 +83,17 @@ input.hidden {
     </div>
     <ul class="nav navbar-nav">
     	<li><a href="${pageContext.request.contextPath}">Home</a></li>
-       	<li><a href="user/myInfo.html">Account Info</a></li>
+       	<li><a href="${pageContext.request.contextPath}/user/myInfo.html">Account Info</a></li>
        	<security:authorize ifAnyGranted="ROLE_USER">
-    		<li><a href="analysis/myAnalysis.html">My Analysis</a></li>
+    		<li><a href="${pageContext.request.contextPath}/analysis/myAnalysis.html">My Analysis</a></li>
+    		<li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Appointments<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a  href="${pageContext.request.contextPath}/appointment/makeAppointmentToCabinet.html">To Cabinet</a></li>
+      		<li><a
+					href="${pageContext.request.contextPath}/appointment/makeAppointmentToLaboratory.html">To Laboratory</a></li>
+          </ul>
+        </li>
     	</security:authorize>
       	<security:authorize ifAnyGranted="ROLE_ADMIN">
       	<li class="dropdown">

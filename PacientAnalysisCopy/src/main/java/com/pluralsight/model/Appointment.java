@@ -15,31 +15,50 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 @Table(name = "appointment")
 @Entity
 public class Appointment {
-	
+
 	@Id
 	@GeneratedValue
 	private int id;
-	
+
 	@Column(name = "date")
 	private Date date;
-	
+
 	@Column(name = "time")
 	private Time time;
-	
+
+	@Column(name = "active")
+	private boolean active;
+
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	@JsonBackReference
 	private User user;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "cabinet_id")
 	@JsonBackReference
 	private Cabinet cabinet;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "laboratory_id")
 	@JsonBackReference
 	private Laborator laboratory;
+
+	public Appointment() {
+	};
+
+	public Appointment(int id, boolean active) {
+		this.id = id;
+		this.active = active;
+	};
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public Date getDate() {
 		return date;
@@ -57,12 +76,12 @@ public class Appointment {
 		this.time = time;
 	}
 
-	public int getId() {
-		return id;
+	public boolean isActive() {
+		return active;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 
 	public User getUser() {

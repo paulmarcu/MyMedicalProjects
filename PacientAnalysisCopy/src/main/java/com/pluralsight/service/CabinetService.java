@@ -9,5 +9,7 @@ public interface CabinetService {
 	Cabinet save(Cabinet cabinet);
 	
 	List<Cabinet> findAll();
+	
+	List<Cabinet> allCabinets();
 
 }

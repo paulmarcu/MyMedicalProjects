@@ -27,6 +27,11 @@ public class CabinetServiceImpl implements CabinetService{
 		
 		return cabinetRepository.findAll();
 	}
+
+	public List<Cabinet> allCabinets() {
+		
+		return cabinetRepository.cabinetsName();
+	}
 	
 	
 

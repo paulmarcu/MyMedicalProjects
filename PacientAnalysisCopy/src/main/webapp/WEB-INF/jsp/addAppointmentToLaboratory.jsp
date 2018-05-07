@@ -1,29 +1,21 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <html>
 <head>
-<title>Home page</title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Appointment To Laboratory page</title>
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 <!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-<style>
-
-.navbar {
-	margin-top: 0px;
-	margin-bottom: 10px;
-}
-
-.jumbotron{
-	margin-bottom: 2px;
-}
-
-</style>
-
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script>
 $(document).ready(function(){
     $(".dropdown").hover(            
@@ -39,13 +31,24 @@ $(document).ready(function(){
 });
 
 </script>
+<style>
+.navbar {
+	margin-top: 0px;
+	margin-bottom: 10px;
+}
+.jumbotron {
+	margin-bottom: 2px;
+}
+</style>
 
 </head>
 <body>
-  <div class="jumbotron text-center">
-    <h1>Welcome to Medical Application!</h1>
-    <p>This application help people and medics to access more efficient the analysis resource</p>
-  </div>
+	<div class="jumbotron text-center">
+		<h1>Welcome to Medical Application!</h1>
+		<p>This application help people and medics to access more
+			efficient the analysis resource</p>
+	</div>
+
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -59,7 +62,7 @@ $(document).ready(function(){
     		<li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Appointments<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a  href="${pageContext.request.contextPath}/appointment/makeAppointmentCabinet.html">To Cabinet</a></li>
+            <li><a  href="${pageContext.request.contextPath}/appointment/makeAppointmentToCabinet.html">To Cabinet</a></li>
       		<li><a
 					href="${pageContext.request.contextPath}/appointment/makeAppointmentToLaboratory.html">To Laboratory</a></li>
           </ul>
@@ -108,5 +111,46 @@ $(document).ready(function(){
     </ul>
   </div>
 </nav>
+
+<div class="container">
+		<div class="row">
+			<div class="col-sm-5">
+				<h4>Make appointment:</h4>
+				<form:form commandName="appointment">
+					<div class="panel panel-default">
+						<div class="panel-body form-horizontal">
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Time</label>
+							  	<div class="col-sm-9">
+									<form:input path="time" class="form-control"></form:input>
+								</div>
+							</div> 
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Cabinet</label>
+								<div class="col-sm-9">
+									<form:select class="select_cabinet form-control"
+										path=".id">
+										<option value="0">--Please select laboratory--</option>
+									</form:select>
+								</div>
+							</div>
+							  <div class="form-group">
+								<label class="col-sm-3 control-label">Date</label>
+								<div class="col-sm-9">
+									<form:input path="date" type="date" class="form-control" />
+								</div>
+							</div> 
+							<div class="form-group">
+								<div class="col-sm-12 text-right">
+									<input class="btn btn-primary" type="submit" value="Submit">
+								</div>
+							</div>
+						</div>
+					</div>
+				</form:form>
+			</div>
+		</div>
+	</div>
+
 </body>
 </html>

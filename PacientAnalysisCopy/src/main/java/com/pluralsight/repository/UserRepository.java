@@ -24,4 +24,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 	@Query("Select new User(u.id, u.firstName, u.lastName) from User u where u.id > 1")
 	public List<User> allInfoFromUsers();
 	
+	@Query("Select new User(u.id) from User u where u.username = :username")
+	public int userIdByUsername(@Param("username") String username);
+	
 }
